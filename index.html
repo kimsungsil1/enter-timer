@@ -2,29 +2,30 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>LED 스타일 타이머</title>
+  <title>LED 스타일 풀스크린 타이머</title>
   <!-- Google Fonts - Orbitron (디지털 느낌의 폰트) -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* 화면 중앙 정렬 및 배경 설정 */
-    body {
+    /* 화면 전체를 채우기 위한 설정 */
+    html, body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+      background-color: #111; /* 어두운 배경 */
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background-color: #111; /* 어두운 배경 */
+      box-sizing: border-box;
     }
 
-    /* 타이머 LED 스타일 */
+    /* LED 스타일의 타이머 */
     #timer {
-      font-family: 'Orbitron', sans-serif; /* 디지털 느낌의 폰트 */
-      font-size: 6em;                     /* 글자 크기 조절 */
+      font-family: 'Orbitron', sans-serif; /* 디지털 느낌 폰트 */
+      font-size: 25vw;                     /* 뷰포트 너비 대비 25% 크기 */
       color: #ff0000;                     /* 빨간색 LED 느낌 */
       background-color: #000;             /* LED 배경 (검정) */
-      padding: 0.2em 0.5em;               /* 여백 */
+      padding: 0.2em 0.3em;               /* 글자 주변 약간의 여백 */
       border-radius: 0.2em;               /* 살짝 둥근 모서리 */
       text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* 발광 효과 */
     }
