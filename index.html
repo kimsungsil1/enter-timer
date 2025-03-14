@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>엔터 타이머</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    #timer { font-size: 2em; }
+  </style>
+</head>
+<body>
+  <h1>엔터키 타이머</h1>
+  <p id="timer">0.0초</p>
+
+  <script>
+    let timerDisplay = document.getElementById('timer');
+    let startTime, timerInterval;
+    let isRunning = false;
+    
+    function updateTimer() {
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+      timerDisplay.textContent = elapsed + "초";
+    }
+    
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        if (!isRunning) {
+          // 타이머 시작
+          startTime = Date.now();
+          timerInterval = setInterval(updateTimer, 100);
+          isRunning = true;
+        } else {
+          // 타이머 정지
+          clearInterval(timerInterval);
+          isRunning = false;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
