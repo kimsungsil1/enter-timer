@@ -19,34 +19,29 @@
       box-sizing: border-box;
     }
 
-    /* LED 스타일의 타이머 - 가로로 넓은 배경 */
+    /* LED 스타일의 타이머 */
     #timer {
-      font-family: 'Orbitron', sans-serif;  /* 디지털 느낌 폰트 */
-      font-size: 25vw;                      /* 뷰포트 너비 대비 25% 크기 */
-      color: #ff0000;                       /* 빨간색 LED 느낌 */
-      background-color: #000;               /* LED 배경 (검정) */
-      border-radius: 0.2em;                 /* 살짝 둥근 모서리 */
+      font-family: 'Orbitron', sans-serif; /* 디지털 느낌 폰트 */
+      font-size: 25vw;                     /* 뷰포트 너비 대비 25% 크기 */
+      color: #ff0000;                     /* 빨간색 LED 느낌 */
+      background-color: #000;             /* LED 배경 (검정) */
+      padding: 0.2em 0.3em;               /* 글자 주변 약간의 여백 */
+      border-radius: 0.2em;               /* 살짝 둥근 모서리 */
       text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* 발광 효과 */
-      width: 80vw;                          /* 가로 폭 늘림 */
-      height: 40vw;                         /* 높이 고정 */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;               /* 패딩 포함 크기 유지 */
     }
   </style>
 </head>
 <body>
-  <div id="timer">0.000</div>
+  <div id="timer">0.0</div>
 
   <script>
     let timerDisplay = document.getElementById('timer');
     let startTime, timerInterval;
     let isRunning = false;
     
+    // 타이머를 갱신하는 함수
     function updateTimer() {
-      // 소수점 3자리까지 표시
-      const elapsed = ((Date.now() - startTime) / 1000).toFixed(3);
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
       timerDisplay.textContent = elapsed;
     }
     
@@ -56,8 +51,7 @@
         if (!isRunning) {
           // 타이머 시작
           startTime = Date.now();
-          // 10ms 간격으로 갱신 => 더 빠른 느낌
-          timerInterval = setInterval(updateTimer, 10);
+          timerInterval = setInterval(updateTimer, 100);
           isRunning = true;
         } else {
           // 타이머 정지
